@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELYSHQ | Premium Software for Creators & Musicians</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Tools built at the intersection of music production, developer logic, and social automation. Home of Unire and EnginEar.">
+  <meta name="author" content="Shawn Bryant / ELYSHQ">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Style -->
+  <style>
+    :root {
+      --bg: #030712;
+      --card-bg: rgba(17, 24, 39, 0.6);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f3f4f6;
+      --text-mute: #9ca3af;
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --cyan: #06b6d4;
+      --green: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .font-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    /* Gradients & Background Shapes */
+    .glow-bg {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
+      top: -200px;
+      right: -100px;
+      z-index: -1;
+      filter: blur(80px);
+      animation: pulse 8s ease-in-out infinite alternate;
+    }
+    
+    .glow-bg-2 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%);
+      top: 600px;
+      left: -200px;
+      z-index: -1;
+      filter: blur(80px);
+      animation: pulse 12s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.15) translate(30px, 30px); }
+    }
+
+    /* Header */
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      background: linear-gradient(135deg, #fff 30%, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-mute);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .btn-header {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-header:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1000px;
+      margin: 80px auto 120px;
+      padding: 0 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #c084fc;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(to right, #ffffff 40%, #93c5fd, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-mute);
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+
+    .btn-hero {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      border: none;
+      padding: 16px 36px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-hero:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 12px 30px rgba(139, 92, 246, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-hero:active {
+      transform: translateY(0);
+    }
+
+    /* Product Section */
+    .products {
+      max-width: 1100px;
+      margin: 0 auto 120px;
+      padding: 0 20px;
+      scroll-margin-top: 80px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--text-mute);
+      font-size: 16px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px;
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: row;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+    }
+
+    .product-info {
+      flex: 1.2;
+    }
+
+    .product-visual {
+      flex: 0.8;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.15));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 280px;
+      position: relative;
+    }
+
+    .product-icon {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+      margin-bottom: 24px;
+    }
+
+    .product-icon svg {
+      width: 40px; height: 40px; color: #fff;
+    }
+
+    .product-name {
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .product-tagline {
+      font-size: 15px;
+      color: #93c5fd;
+      font-weight: 600;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .product-desc {
+      color: var(--text-mute);
+      margin-bottom: 28px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    .feature-item svg {
+      color: var(--green);
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .price {
+      font-size: 36px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+    }
+
+    .price-sub {
+      font-size: 12px;
+      color: var(--text-mute);
+      display: block;
+      margin-top: -4px;
+    }
+
+    .btn-buy {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-buy:hover {
+      background: #f3f4f6;
+      transform: translateY(-1px);
+    }
+
+    /* Story Section */
+    .story-section {
+      background: rgba(17, 24, 39, 0.4);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 0;
+      margin-bottom: 100px;
+    }
+
+    .story-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .story-img-container {
+      flex: 0.8;
+      position: relative;
+    }
+
+    .story-img-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    .story-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .story-sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-mute);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .story-content {
+      flex: 1.2;
+    }
+
+    .story-content h2 {
+      font-size: 32px;
+      margin-bottom: 18px;
+      background: linear-gradient(to right, #fff, #9ca3af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .story-content p {
+      color: var(--text-mute);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-mute);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--text-mute);
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .product-card {
+        flex-direction: column;
+        padding: 32px;
+      }
+      .product-visual {
+        width: 100%;
+      }
+      .story-container {
+        flex-direction: column-reverse;
+        gap: 40px;
+        text-align: center;
+      }
+      .story-img-container {
+        width: 100%;
+        max-width: 320px;
+      }
+      .hero h1 {
+        font-size: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-bg"></div>
+  <div class="glow-bg-2"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">ELYSHQ</div>
+    <nav>
+      <a href="#products">Software</a>
+      <a href="#about">Story</a>
+      <a href="https://elyshq.com" class="btn-header">Licensing</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="badge">Created for Creators</div>
+    <h1>Premium Utilities for<br>Modern Creators & Artists</h1>
+    <p>Tools designed to bridge software engineering logic with music production workflows. Spend less time organizing, more time creating.</p>
+    <a href="#products" class="btn-hero">Explore Apps</a>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products" id="products">
+    <div class="section-title">
+      <h2>Featured Software</h2>
+      <p>Click Buy to secure your lifetime license key instantly via Lemon Squeezy.</p>
+    </div>
+
+    <div class="product-grid">
+      <!-- Unire Card -->
+      <div class="product-card">
+        <div class="product-info">
+          <div class="product-tagline">Video Studio Sync</div>
+          <h3 class="product-name">Unire</h3>
+          <p class="product-desc">Automate your video processing backlog. Unire monitors OBS recording folders, automatically transcodes audio via Whisper transcription, stages file assets, generates AI-powered SEO metadata/descriptions via Gemini, and schedules direct uploads to Buffer in one click.</p>
+          
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l5-5z" clip-rule="evenodd"/></svg>
+              Auto-names & stages recordings
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l5-5z" clip-rule="evenodd"/></svg>
+              Fast macOS stream-copy cut
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l5-5z" clip-rule="evenodd"/></svg>
+              Local Whisper audio transcription
+            </li>
+            <li class="feature-item">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l5-5z" clip-rule="evenodd"/></svg>
+              Gemini AI metadata generator
+            </li>
+          </ul>
+
+          <div class="price-row">
+            <div>
+              <span class="price">$29</span>
+              <span class="price-sub">One-time purchase</span>
+            </div>
+            <!-- Lemon Squeezy Store Product Link -->
+            <!-- Replace the href with your actual Lemon Squeezy checkout link -->
+            <a href="https://elysian.lemonsqueezy.com/checkout/buy/unire?embed=1" class="btn-buy lemonsqueezy-button">Buy Unire</a>
+          </div>
+        </div>
+
+        <div class="product-visual">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="23 7 16 12 23 17 23 7"/>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+            </svg>
+          </div>
+          <div style="font-family:'Outfit'; font-weight:600; font-size:16px;">Unire App Bundle</div>
+          <div style="font-size:12px; color:var(--text-mute); margin-top:4px;">Built for Apple Silicon & Intel macOS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Story Section -->
+  <section class="story-section" id="about">
+    <div class="story-container">
+      <div class="story-img-container">
+        <div class="story-img-card">
+          <div class="story-label">SHORTY D</div>
+          <div class="story-sub">Dev & Music Artist</div>
+        </div>
+      </div>
+      <div class="story-content">
+        <h2>Behind the Mic & Code</h2>
+        <p>Hi, I'm Shawn Bryant (Shorty D). I work as a developer by day and write, record, and produce music by night. ELYSHQ is where my software builds meet my recording studio needs.</p>
+        <p>I build tools to automate the repetitive tasks—like renaming video cuts, running transcriptions, and sorting assets. Every app featured here is something I use daily to publish my own tracks and creator clips.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>&copy; 2026 ELYSHQ. All rights reserved.</div>
+    <div>
+      <a href="#products">Software</a> | 
+      <a href="#about">Story</a>
+    </div>
+  </footer>
+
+  <!-- Lemon Squeezy Embed Script -->
+  <!-- This script automatically converts links with lemonsqueezy-button class into smooth checkout overlays -->
+  <script src="https://lemonsqueezy.com/js/lemon.js" defer></script>
+  <script>
+    window.createLemonSqueezy = function () {
+      if (window.LemonSqueezy) {
+        window.LemonSqueezy.Setup();
+      }
+    };
+    window.addEventListener('load', function() {
+      createLemonSqueezy();
+    });
+  </script>
+</body>
+</html>
