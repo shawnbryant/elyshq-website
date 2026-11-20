@@ -1,16 +1,22 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "elyshq-website",
+  "main": "worker.js",
   "compatibility_date": "2026-07-03",
   "observability": {
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS"
   },
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "vars": {
+    "KEYGEN_ACCOUNT_ID": "elysian",
+    "KEYGEN_POLICY_ID": ""
+  },
   "routes": [
     { "pattern": "elyshq.com", "custom_domain": true },
     { "pattern": "www.elyshq.com", "custom_domain": true }
